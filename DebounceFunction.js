@@ -22,3 +22,18 @@ log();
 //Usage:
 // const log = debounce(() => console.log("Debounced!"), 3000);
 // log(); // This will log "Debounced!" after 3 seconds
+
+
+//Another Method
+
+const debounceArrow = (fn,delay)=>{
+    let Timerid;
+    return function(...args){
+        clearTimeout(Timerid);
+        Timerid=setTimeout(()=>{
+            fn(...args);
+        },delay)
+    }
+}
+
+const logDebounced=debounceArrow(()=>console.log("Debounced!"),2000);
